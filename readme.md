@@ -6,7 +6,7 @@
 
 - Python 3.x
 - pycryptodomeライブラリ
-- `input.txt`: 検証するテキストファイルのパス
+- `input.txt`: 検証するテキストファイル
 
 ## 使用方法
 
