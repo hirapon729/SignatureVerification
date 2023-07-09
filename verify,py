@@ -1,0 +1,39 @@
+import hashlib
+from Crypto.PublicKey import RSA
+from Crypto.Signature import PKCS1_v1_5
+from Crypto.Hash import SHA256
+
+def verify_rsa_signature(data, signature, public_key_path):
+    # データのハッシュ値を計算
+    hash_value = hashlib.sha256(data).digest()
+
+    # 公開鍵の読み込み
+    with open(public_key_path, 'r') as f:
+        public_key = RSA.import_key(f.read())
+
+    # 署名の検証
+    verifier = PKCS1_v1_5.new(public_key)
+    is_valid = verifier.verify(SHA256.new(hash_value), signature)
+    return is_valid
+
+# 検証するテキストファイルと署名ファイル、公開鍵のパスを指定
+file_path = "input.txt"
+signature_path = "signature.bin"
+public_key_path = "id_rsa_test.pub"
+
+# テキストファイルを読み込む
+with open(file_path, 'rb') as file:
+    data_to_verify = file.read()
+
+# 署名ファイルを読み込む
+with open(signature_path, 'rb') as file:
+    signature_to_verify = file.read()
+
+# RSA署名を検証
+is_valid = verify_rsa_signature(data_to_verify, signature_to_verify, public_key_path)
+
+# 検証結果を表示
+if is_valid:
+    print("Signature is valid.")
+else:
+    print("Signature is NOT valid.")
