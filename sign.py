@@ -23,7 +23,7 @@ def generate_rsa_signature(data, private_key_path, signature_path):
 
 # 署名を生成するテキストファイルと秘密鍵のパスを指定
 file_path = "input.txt"
-private_key_path = "id_rsa_test"
+private_key_path = "private.pem"
 signature_path = "signature.bin"
 
 # テキストファイルを読み込む

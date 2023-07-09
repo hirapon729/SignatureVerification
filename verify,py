@@ -19,7 +19,7 @@ def verify_rsa_signature(data, signature, public_key_path):
 # 検証するテキストファイルと署名ファイル、公開鍵のパスを指定
 file_path = "input.txt"
 signature_path = "signature.bin"
-public_key_path = "id_rsa_test.pub"
+public_key_path = "public.pem"
 
 # テキストファイルを読み込む
 with open(file_path, 'rb') as file:
